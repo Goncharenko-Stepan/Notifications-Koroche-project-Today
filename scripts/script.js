@@ -1,34 +1,23 @@
 const sendOrder = document.querySelector(".sendOrder");
+const mainForm = document.querySelector(".mainForm");
+
+const sideBarDiv = document.createElement("div");
+sideBarDiv.classList.add("sidebar");
+sideBarDiv.style.right = "-300px";
+
+const closeBtn = document.createElement("button");
+closeBtn.textContent = "Close";
+closeBtn.classList.add("close-btn");
+
+sideBarDiv.appendChild(mainForm);
+sideBarDiv.appendChild(closeBtn);
+
+document.body.appendChild(sideBarDiv);
 
 sendOrder.addEventListener("click", () => {
-  setTimeout(() => {
-    const modalWindow = document.createElement("div");
-    modalWindow.className = "modalWindow";
+  sideBarDiv.style.right = "0";
+});
 
-    const modalContent = document.createElement("div");
-    modalContent.className = "modalContent";
-
-    const paragraf1 = document.createElement("p");
-    paragraf1.textContent = "This is paragraph 1.";
-    const paragraf2 = document.createElement("p");
-    paragraf2.textContent = "This is paragraph 2.";
-
-    modalContent.appendChild(paragraf1);
-    modalContent.appendChild(paragraf2);
-
-    for (let i = 0; i < 3; i++) {
-      const newButton = document.createElement("button");
-      newButton.textContent = `Button ${i + 1}`;
-      modalContent.appendChild(newButton);
-    }
-
-    modalWindow.appendChild(modalContent);
-    document.body.appendChild(modalWindow);
-
-    window.onclick = function (event) {
-      if (event.target === modalWindow) {
-        document.body.removeChild(modalWindow);
-      }
-    };
-  }, 2000);
+closeBtn.addEventListener("click", () => {
+  sideBarDiv.style.right = "-300px";
 });
